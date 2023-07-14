@@ -6,25 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'turma_model.dart';
-export 'turma_model.dart';
+import 'detalhesturmas_model.dart';
+export 'detalhesturmas_model.dart';
 
-class TurmaWidget extends StatefulWidget {
-  const TurmaWidget({Key? key}) : super(key: key);
+class DetalhesturmasWidget extends StatefulWidget {
+  const DetalhesturmasWidget({Key? key}) : super(key: key);
 
   @override
-  _TurmaWidgetState createState() => _TurmaWidgetState();
+  _DetalhesturmasWidgetState createState() => _DetalhesturmasWidgetState();
 }
 
-class _TurmaWidgetState extends State<TurmaWidget> {
-  late TurmaModel _model;
+class _DetalhesturmasWidgetState extends State<DetalhesturmasWidget> {
+  late DetalhesturmasModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TurmaModel());
+    _model = createModel(context, () => DetalhesturmasModel());
   }
 
   @override
@@ -40,9 +40,9 @@ class _TurmaWidgetState extends State<TurmaWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7941D),
+        backgroundColor: Color(0xFF303030),
         appBar: AppBar(
-          backgroundColor: Color(0xFF004C94),
+          backgroundColor: Color(0xFF00498D),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -58,17 +58,13 @@ class _TurmaWidgetState extends State<TurmaWidget> {
               context.pop();
             },
           ),
-          title: Align(
-            alignment: AlignmentDirectional(-0.3, 0),
-            child: Text(
-              'Turma',
-              textAlign: TextAlign.justify,
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
-            ),
+          title: Text(
+            'Turma',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22,
+                ),
           ),
           actions: [],
           centerTitle: false,
@@ -76,87 +72,68 @@ class _TurmaWidgetState extends State<TurmaWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
-                      child: Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).info,
-                        elevation: 4,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                          child: Text(
-                            'Turma 2023.1\n27/03 a 11/07/23\n13:30 h - 17:30 h\nProgramador Web',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 20,
-                                  lineHeight: 1.5,
-                                ),
+          child: Align(
+            alignment: AlignmentDirectional(0, 0),
+            child: Container(
+              width: 600,
+              height: MediaQuery.sizeOf(context).height * 1,
+              decoration: BoxDecoration(
+                color: Color(0xFF303030),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Color(0xFF424242),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 20, 20, 20),
+                              child: Text(
+                                'Turma 2023.1\n\nTurno: Vespertino\n\nData de início: 27/03/2023\n\nData de término: 11/07/2023\n\nHoras-aula por dia: 04\n\nCurso: Programador Web',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFFB8B8B8),
+                                      fontSize: 22,
+                                    ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Editar',
-                    options: FFButtonOptions(
-                      width: 100,
-                      height: 40,
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                      color: Color(0xFF004C94),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                              ),
-                      elevation: 3,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                    ],
                   ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0, 0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: 'Excluir',
+                      text: 'Editar',
                       options: FFButtonOptions(
-                        width: 100,
+                        width: 120,
                         height: 40,
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                        color: Color(0xFF004C94),
+                        color: Color(0xFF00498D),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
@@ -171,8 +148,35 @@ class _TurmaWidgetState extends State<TurmaWidget> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                    child: FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'Excluir',
+                      options: FFButtonOptions(
+                        width: 120,
+                        height: 40,
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        color: FlutterFlowTheme.of(context).error,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

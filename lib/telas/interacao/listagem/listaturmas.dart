@@ -1,28 +1,29 @@
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'listaturmas_model.dart';
+export 'listaturmas_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class ListaturmasWidget extends StatefulWidget {
+  const ListaturmasWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _ListaturmasWidgetState createState() => _ListaturmasWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
-  late HomePageModel _model;
+class _ListaturmasWidgetState extends State<ListaturmasWidget> {
+  late ListaturmasModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => ListaturmasModel());
   }
 
   @override
@@ -38,20 +39,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7941D),
+        backgroundColor: Color(0xFF303030),
         appBar: AppBar(
-          backgroundColor: Color(0xFF004C94),
+          backgroundColor: Color(0xFF00498D),
           automaticallyImplyLeading: false,
-          title: Align(
-            alignment: AlignmentDirectional(0, 0),
-            child: Text(
-              'Turmas',
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
-                    color: Colors.white,
-                    fontSize: 22,
-                  ),
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30,
             ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
+          title: Text(
+            'Lista de turmas',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Outfit',
+                  color: Colors.white,
+                  fontSize: 22,
+                ),
           ),
           actions: [],
           centerTitle: false,
@@ -59,107 +71,115 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).info,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                        child: Text(
-                          'Turma 2023.1\nProgramador Web',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20,
-                                lineHeight: 1.5,
+          child: Align(
+            alignment: AlignmentDirectional(0, 0),
+            child: Container(
+              width: MediaQuery.sizeOf(context).width * 0.8,
+              height: MediaQuery.sizeOf(context).height * 1,
+              decoration: BoxDecoration(
+                color: Color(0xFF303030),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Color(0xFF424242),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 20, 20, 20),
+                              child: Text(
+                                'Turma 2023.1\nProgramador Web',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFFB8B8B8),
+                                      fontSize: 22,
+                                    ),
                               ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).info,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                        child: Text(
-                          'Turma 2023.1\nProgramador de Sistemas',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20,
-                                lineHeight: 1.5,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Color(0xFF424242),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 20, 20, 20),
+                              child: Text(
+                                'Turma 2023.1\nProgramador de Sistemas',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFFB8B8B8),
+                                      fontSize: 22,
+                                    ),
                               ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).info,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                        child: Text(
-                          'Turma 2023.1\nAdm de Banco de Dados',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20,
-                                lineHeight: 1.5,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                        child: Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Color(0xFF424242),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 20, 20, 20),
+                              child: Text(
+                                'Turma 2023.1\nAdministrador de Banco de Dados',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Color(0xFFB8B8B8),
+                                      fontSize: 22,
+                                    ),
                               ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    Card(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      color: FlutterFlowTheme.of(context).info,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                        child: Text(
-                          'Turma 2023.2\nProgramador Web',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 20,
-                                lineHeight: 1.5,
-                              ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
